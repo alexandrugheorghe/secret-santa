@@ -23,9 +23,10 @@ class PairsRepository
      */
     public function getReceiverIdByGiverId(string $giverId) : string
     {
-        // @todo
+        $result = $this->model
+            ->where('giver_id', $giverId)
+            ->first();
 
-        return '002';
+        return $result->receiver_id;
     }
-
 }

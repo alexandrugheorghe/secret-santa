@@ -21,11 +21,13 @@ class HintsRepository
      *
      * @return string
      */
-    public function getHintsByReceiverId(string $receiverId) : string
+    public function getHintsByReceiverId(string $receiverId)
     {
-        // @todo
+        $result = $this->model
+            ->where('receiver_id', $receiverId)
+            ->get(['content', 'created_at']);
 
-        return 'hints collection';
+        return $result;
     }
 
 }
