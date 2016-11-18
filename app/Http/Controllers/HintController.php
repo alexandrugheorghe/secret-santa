@@ -2,17 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\Pair;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use Illuminate\Http\Response;
 use InvalidArgumentException;
+use App\WorkAngel\WorkAngelApiClient;
+use App\Repositories\PairsRepository;
+use App\Repositories\HintsRepository;
 
 class HintController extends Controller
 {
     /**
-     * Mocks
+     * @var Request
+     */
+    private $request;
+
+    /**
+     * @var WorkAngelApiClient
+     */
+    private $workAngelApiClient;
+
+    /**
+     * @var PairsRepository
+     */
+    private $pairsRepository;
+
+    /**
+     * @var HintsRepository
+     */
+    private $hintsRepository;
+
+    public function __construct(
+        Request $request,
+        WorkAngelApiClient $workAngelApiClient,
+        PairsRepository $pairsRepository,
+        HintsRepository $hintsRepository
+    ) {
+        $this->request = $request;
+        $this->workAngelApiClient = $workAngelApiClient;
+        $this->pairsRepository = $pairsRepository;
+        $this->hintsRepository = $hintsRepository;
+    }
+
+    /**
+     * Mocks the index action (returns dummy hints)
      */
     public function getDummies()
     {
@@ -31,14 +62,21 @@ class HintController extends Controller
         return response()->json($dummyHints);
     }
 
-    public function index(Request $request)
+    /**
+     * Returns hints for given user
+     */
+    public function index()
     {
-        $userToken = $request->header('userToken');
+        $userToken = $this->request->header('userToken');
 
         if (!$userToken) {
             throw new InvalidArgumentException('Missing header: userToken');
         }
 
-        return Pair::all();
+        $userId = $this->workAngelApiClient->getUserIdByToken($userToken);
+        $receiverId = $this->pairsRepository->getReceiverIdByGiverId($userId);
+        $hints = $this->hintsRepository->getHintsByReceiverId($receiverId);
+
+        return $hints;
     }
 }
