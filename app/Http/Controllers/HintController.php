@@ -42,9 +42,8 @@ class HintController extends Controller
         $this->hintsRepository = $hintsRepository;
     }
 
-
     /**
-     * Mocks
+     * Mocks the index action (returns dummy hints)
      */
     public function getDummies()
     {
@@ -64,7 +63,7 @@ class HintController extends Controller
     }
 
     /**
-     * This is a prototype
+     * Returns hints for given user
      */
     public function index()
     {
