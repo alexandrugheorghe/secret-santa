@@ -18,29 +18,29 @@ class PairsTableSeeder extends Seeder
         DB::table('pairs')->insert([
             'giver_id' => '001',
             'receiver_id' => '002',
-            'created_at' => $faker->dateTime->getTimestamp(),
-            'updated_at' => $faker->dateTime->getTimestamp(),
+            'created_at' => $faker->dateTime,
+            'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('pairs')->insert([
             'giver_id' => '002',
             'receiver_id' => '002',
-            'created_at' => $faker->dateTime->getTimestamp(),
-            'updated_at' => $faker->dateTime->getTimestamp(),
+            'created_at' => $faker->dateTime,
+            'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('pairs')->insert([
             'giver_id' => '003',
             'receiver_id' => '004',
-            'created_at' => $faker->dateTime->getTimestamp(),
-            'updated_at' => $faker->dateTime->getTimestamp(),
+            'created_at' => $faker->dateTime,
+            'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('pairs')->insert([
             'giver_id' => '004',
             'receiver_id' => '001',
-            'created_at' => $faker->dateTime->getTimestamp(),
-            'updated_at' => $faker->dateTime->getTimestamp(),
+            'created_at' => $faker->dateTime,
+            'updated_at' => $faker->dateTime,
         ]);
     }
 }
