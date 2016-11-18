@@ -18,10 +18,6 @@ class CreateHintsTable extends Migration
             $table->text('content');
             $table->timestamps();
         });
-
-        Schema::table('hints', function ($table) {
-            $table->primary('receiver_id');
-        });
     }
 
     /**

@@ -18,10 +18,6 @@ class CreatePairsTable extends Migration
             $table->string('receiver_id');
             $table->timestamps();
         });
-
-        Schema::table('pairs', function ($table) {
-            $table->primary('giver_id');
-        });
     }
 
     /**
