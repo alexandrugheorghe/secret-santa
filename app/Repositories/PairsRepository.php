@@ -27,6 +27,10 @@ class PairsRepository
             ->where('giver_id', $giverId)
             ->first();
 
+        if (!$result) {
+            throw new RepositoryException("Receiver could not be retrieved by giver id: $giverId");
+        }
+
         return $result->receiver_id;
     }
 }

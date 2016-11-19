@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use InvalidArgumentException;
 use App\WorkAngelApi\Client as WorkAngelApiClient;
 use App\Repositories\PairsRepository;
 use App\Repositories\HintsRepository;
