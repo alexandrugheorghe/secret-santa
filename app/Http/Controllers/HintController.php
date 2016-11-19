@@ -75,7 +75,7 @@ class HintController extends Controller
 
         $userId = $this->workAngelApiClient->getUserIdByToken($userToken);
         $receiverId = $this->pairsRepository->getReceiverIdByGiverId($userId);
-        $hints = $this->hintsRepository->getHintsByReceiverId($receiverId);
+        $hints = $this->hintsRepository->getByReceiverId($receiverId);
 
         return $hints;
     }

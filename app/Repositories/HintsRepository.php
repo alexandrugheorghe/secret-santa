@@ -21,7 +21,7 @@ class HintsRepository
      *
      * @return string
      */
-    public function getHintsByReceiverId(string $receiverId)
+    public function getByReceiverId(string $receiverId)
     {
         $result = $this->model
             ->where('receiver_id', $receiverId)
