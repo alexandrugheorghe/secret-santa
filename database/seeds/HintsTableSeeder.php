@@ -15,14 +15,14 @@ class HintsTableSeeder extends Seeder
         $faker = Factory::create();
 
         DB::table('hints')->insert([
-            'receiver_id' => '001',
+            'receiver_id' => '5811f279fc1bc7db15d9af5f',
             'content' => $faker->realText($maxNbChars = 120, $indexSize = 2),
             'created_at' => $faker->dateTime,
             'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('hints')->insert([
-            'receiver_id' => '001',
+            'receiver_id' => '5811f279fc1bc7db15d9af5f',
             'content' => $faker->realText($maxNbChars = 120, $indexSize = 2),
             'created_at' => $faker->dateTime,
             'updated_at' => $faker->dateTime,
@@ -36,14 +36,14 @@ class HintsTableSeeder extends Seeder
         ]);
 
         DB::table('hints')->insert([
-            'receiver_id' => '003',
+            'receiver_id' => '002',
             'content' => $faker->realText($maxNbChars = 120, $indexSize = 2),
             'created_at' => $faker->dateTime,
             'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('hints')->insert([
-            'receiver_id' => '004',
+            'receiver_id' => '002',
             'content' => $faker->realText($maxNbChars = 120, $indexSize = 2),
             'created_at' => $faker->dateTime,
             'updated_at' => $faker->dateTime,
