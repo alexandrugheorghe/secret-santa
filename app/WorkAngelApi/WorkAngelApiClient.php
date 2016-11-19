@@ -1,6 +1,6 @@
 <?php
 
-namespace App\WorkAngel;
+namespace App\WorkAngelApi;
 
 class WorkAngelApiClient
 {
