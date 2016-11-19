@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Model\Hint;
+use App\Models\Hint;
 
 class HintsRepository
 {

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Model\Pair;
+use App\Models\Pair;
 
 class PairsRepository
 {
