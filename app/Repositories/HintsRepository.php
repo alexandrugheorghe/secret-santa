@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Hint;
+use App\Model\Hint;
 
 class HintsRepository
 {
@@ -29,5 +29,4 @@ class HintsRepository
 
         return $result;
     }
-
 }
