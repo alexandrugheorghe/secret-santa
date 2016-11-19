@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use InvalidArgumentException;
-use App\WorkAngel\WorkAngelApiClient;
+use App\WorkAngelApi\Client as WorkAngelApiClient;
 use App\Repositories\PairsRepository;
 use App\Repositories\HintsRepository;
 
@@ -67,13 +67,8 @@ class HintController extends Controller
      */
     public function index()
     {
-        $userToken = $this->request->header('userToken');
-
-        if (!$userToken) {
-            throw new InvalidArgumentException('Missing header: userToken');
-        }
-
-        $userId = $this->workAngelApiClient->getUserIdByToken($userToken);
+        $wamToken = $this->request->header('Wam-Token');
+        $userId = $this->workAngelApiClient->getUserIdByToken($wamToken);
         $receiverId = $this->pairsRepository->getReceiverIdByGiverId($userId);
         $hints = $this->hintsRepository->getByReceiverId($receiverId);
 

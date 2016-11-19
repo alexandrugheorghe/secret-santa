@@ -1,7 +1,14 @@
 <?php
 
-Route::group(['middleware' => 'cors'], function(\Illuminate\Routing\Router $router){
-    $router->get('/hints', 'HintController@getDummies');
-    $router->post('/users', 'UserController@postRaffle');
-    $router->get('/dev/hints', 'HintController@index');
-});
+$apiMiddleware = ['cors', 'wam-token'];
+
+Route::group(
+    [
+        'middleware' => $apiMiddleware,
+    ],
+    function(\Illuminate\Routing\Router $router) {
+        $router->get('/hints', 'HintController@getDummies');
+        $router->get('/dev/hints', 'HintController@index');
+        $router->post('/users', 'UserController@postRaffle');
+    }
+);
