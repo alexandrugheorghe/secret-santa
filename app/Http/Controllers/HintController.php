@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Factories\HintFactory;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\WorkAngelApi\Client as WorkAngelApiClient;
 use App\Repositories\PairsRepository;
@@ -42,26 +44,6 @@ class HintController extends Controller
     }
 
     /**
-     * Mocks the index action (returns dummy hints)
-     */
-    public function getDummies()
-    {
-        $faker = \Faker\Factory::create();
-
-        $numHints = rand(4, 24);
-        $dummyHints = [];
-
-        for ($i = 1; $i < $numHints; $i++) {
-            $dummyHints[] = [
-                'content' => $faker->realText($maxNbChars = 120, $indexSize = 2),
-                'created_at' => $faker->dateTime->getTimestamp()
-            ];
-        }
-
-        return response()->json($dummyHints);
-    }
-
-    /**
      * Returns hints for given user
      */
     public function index()
@@ -70,6 +52,21 @@ class HintController extends Controller
         $userId = $this->workAngelApiClient->getUserIdByToken($wamToken);
         $receiverId = $this->pairsRepository->getReceiverIdByGiverId($userId);
         $hints = $this->hintsRepository->getByReceiverId($receiverId);
+
+        return $hints;
+    }
+
+    /**
+     * Returns fake hints (mocks index action)
+     */
+    public function indexMock(HintFactory $factory)
+    {
+        $numHints = rand(1, 12);
+        $hints = new Collection();
+
+        for ($i = 0; $i < $numHints; $i++) {
+            $hints->add($factory->createRandomHint());
+        }
 
         return $hints;
     }

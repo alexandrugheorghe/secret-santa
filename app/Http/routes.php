@@ -7,8 +7,8 @@ Route::group(
         'middleware' => $apiMiddleware,
     ],
     function(\Illuminate\Routing\Router $router) {
-        $router->get('/hints', 'HintController@getDummies');
-        $router->get('/dev/hints', 'HintController@index');
+        $router->get('/mock/hints', 'HintController@indexMock');
+        $router->get('/hints', 'HintController@index');
         $router->post('/users', 'UserController@postRaffle');
     }
 );
