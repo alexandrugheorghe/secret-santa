@@ -3,6 +3,7 @@
 namespace App\Factories;
 
 use App\Models\Hint;
+use App\ValueObjects\HintType;
 use Carbon\Carbon;
 
 class HintFactory
@@ -32,6 +33,15 @@ class HintFactory
         return (new Hint())
             ->setContent($this->getRandomFakeContent())
             ->setCreatedAt($this->getRandomDate());
+    }
+
+    public function createHint(string $receiverId, string $content, HintType $type, Carbon $revealedAt) : Hint
+    {
+        return (new Hint())
+            ->setReceiverId($receiverId)
+            ->setContent($content)
+            ->setType($type)
+            ->setRevealedAt($revealedAt);
     }
 
     private function getRandomFakeContent() : string
