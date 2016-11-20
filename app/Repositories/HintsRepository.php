@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Hint;
+use Carbon\Carbon;
 
 class HintsRepository
 {
@@ -25,6 +26,7 @@ class HintsRepository
     {
         $result = $this->model
             ->where('receiver_id', $receiverId)
+            ->where('revealed_at', '<', Carbon::now())
             ->get(['content', 'created_at']);
 
         return $result;
