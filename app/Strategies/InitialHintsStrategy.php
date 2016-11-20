@@ -91,9 +91,8 @@ class InitialHintsStrategy
             $hints->add($hint);
         }
 
-
         if (isset($user['work_start'])) {
-            $workStart = Carbon::createFromTimestamp((integer)$user['work_start']);
+            $workStart = Carbon::createFromTimestamp($user['work_start']);
 
             $hint = $this->hintFactory->createHint(
                 $receiverId,

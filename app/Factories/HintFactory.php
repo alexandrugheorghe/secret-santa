@@ -42,8 +42,8 @@ class HintFactory
             ->setContent($content)
             ->setType($type)
             ->setRevealedAt($revealedAt)
-            ->setCreatedAt(new Carbon())
-            ->setUpdatedAt(new Carbon());
+            ->setCreatedAt(Carbon::now())
+            ->setUpdatedAt(Carbon::now());
     }
 
     private function getRandomFakeContent() : string

@@ -44,4 +44,18 @@ class Hint extends Model
 
         return $this;
     }
+
+    public function setCreatedAt(Carbon $createdAt) : self
+    {
+        $this->created_at = $createdAt;
+
+        return $this;
+    }
+
+    public function setUpdatedAt(Carbon $updatedAt) : self
+    {
+        $this->updated_at = $updatedAt;
+
+        return $this;
+    }
 }

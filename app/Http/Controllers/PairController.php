@@ -7,7 +7,7 @@ use App\Repositories\PairsRepository;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use League\Flysystem\Exception;
+use Exception;
 
 class PairController extends Controller
 {
