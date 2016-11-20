@@ -1,5 +1,6 @@
 <?php
 
+use App\ValueObjects\HintType;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 
@@ -16,35 +17,40 @@ class HintsTableSeeder extends Seeder
 
         DB::table('hints')->insert([
             'receiver_id' => '5811f279fc1bc7db15d9af5f',
-            'content' => $faker->realText(120),
+            'content' => 'Your Secret Santa is female',
+            'type' => HintType::gender(),
             'created_at' => $faker->dateTime,
             'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('hints')->insert([
             'receiver_id' => '5811f279fc1bc7db15d9af5f',
-            'content' => $faker->realText(120),
+            'content' => 'Your Secret Santa joined in March',
+            'type' => HintType::joinedInMonth(),
             'created_at' => $faker->dateTime,
             'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('hints')->insert([
             'receiver_id' => '002',
-            'content' => $faker->realText(120),
+            'content' => 'Your Secret Santa joined in 2015',
+            'type' => HintType::joinedInYear(),
             'created_at' => $faker->dateTime,
             'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('hints')->insert([
             'receiver_id' => '002',
-            'content' => $faker->realText(120),
+            'content' => 'Your Secret Santa\s birthday is on May 31, 1989',
+            'type' => HintType::birthday(),
             'created_at' => $faker->dateTime,
             'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('hints')->insert([
             'receiver_id' => '002',
-            'content' => $faker->realText(120),
+            'content' => 'Your Secret Santa\'s last name starts with G',
+            'type' => HintType::lastNameStartsWith(),
             'created_at' => $faker->dateTime,
             'updated_at' => $faker->dateTime,
         ]);

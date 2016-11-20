@@ -16,6 +16,7 @@ class CreateHintsTable extends Migration
         Schema::create('hints', function (Blueprint $table) {
             $table->string('receiver_id');
             $table->text('content');
+            $table->integer('type');
             $table->timestamps();
         });
     }
