@@ -14,18 +14,25 @@ class Client
         $this->http = $http;
     }
 
-    public function getUserIdByToken(string $token) : string
+    public function getUserByToken(string $token) : array
     {
         $url = env('WORK_ANGEL_API_URL') . '/user/me';
         $params = [
             'headers' => [
                 'Accept' => 'application/vnd.wam-api-v1.3+json',
                 'Wam-Token' => $token,
-            ]
+            ],
         ];
 
         $getUserResponse = $this->http->get($url, $params);
         $user = $this->decodeResponseBody($getUserResponse);
+
+        return $user;
+    }
+
+    public function getUserIdByToken(string $token) : string
+    {
+        $user = $this->getUserByToken($token);
 
         if (!isset($user['user_id'])) {
             throw new ClientException('Could not retrieve user id from response body');
