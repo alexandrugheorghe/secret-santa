@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\ValueObjects\HintType;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Hint extends Model
@@ -11,6 +10,10 @@ class Hint extends Model
     public $primaryKey = 'receiver_id';
 
     public $incrementing = false;
+
+    protected $casts = [
+        'created_at' => 'timestamp'
+    ];
 
     public function setReceiverId(string $receiverId) : self
     {
@@ -33,7 +36,7 @@ class Hint extends Model
         return $this;
     }
 
-    public function setRevealedAt(Carbon $revealedAt) : self
+    public function setRevealedAt(int $revealedAt) : self
     {
         $this->revealed_at = $revealedAt;
 

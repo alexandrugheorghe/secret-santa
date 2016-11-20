@@ -27,8 +27,8 @@ class HintsRepository
     {
         $result = $this->model
             ->where('receiver_id', $receiverId)
-            ->where('revealed_at', '<', Carbon::now())
-            ->get(['content', 'created_at']);
+            ->where('revealed_at', '<', Carbon::now()->getTimestamp())
+            ->get(['content', 'revealed_at AS created_at']);
 
         if ($result->isEmpty()) {
             throw new RepositoryException('Result is empty');
@@ -47,6 +47,11 @@ class HintsRepository
         return $hint->save();
     }
 
+    /**
+     * @param Collection $hints
+     *
+     * @return mixed
+     */
     public function saveCollection(Collection $hints)
     {
         return $this->model->insert($hints->toArray());
