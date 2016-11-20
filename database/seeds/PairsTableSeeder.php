@@ -17,13 +17,13 @@ class PairsTableSeeder extends Seeder
 
         DB::table('pairs')->insert([
             'giver_id' => '5811f279fc1bc7db15d9af5f',
-            'receiver_id' => '002',
+            'receiver_id' => '5728bbec42dd48f27a8b4594',
             'created_at' => $faker->dateTime,
             'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('pairs')->insert([
-            'giver_id' => '002',
+            'giver_id' => '5728bbec42dd48f27a8b4594',
             'receiver_id' => '5811f279fc1bc7db15d9af5f',
             'created_at' => $faker->dateTime,
             'updated_at' => $faker->dateTime,

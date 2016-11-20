@@ -47,6 +47,7 @@ class InitialHintsStrategy
         $user = $this->workAngelApiClient->getUserByToken($token);
         $hints = new Collection();
 
+        // First letter of first name hint
         if (isset($user['first_name'])) {
             $firstLetter = $user['first_name'][0];
 
@@ -60,6 +61,7 @@ class InitialHintsStrategy
             $hints->add($hint);
         }
 
+        // First letter of last name hint
         if (isset($user['last_name'])) {
             $firstLetter = $user['last_name'][0];
 
@@ -69,6 +71,37 @@ class InitialHintsStrategy
                 HintType::lastNameStartsWith(),
                 Carbon::now()->subSecond()
             );
+            $hints->add($hint);
+        }
+
+        // The gender hint
+        if (isset($user['gender'])) {
+            $gender = $user['gender'];
+
+            /**
+             * Todo cover 'other' scenario
+             */
+
+            $hint = $this->hintFactory->createHint(
+                $receiverId,
+                "Your Secret Santa's gender is $gender",
+                HintType::gender(),
+                Carbon::now()->subSecond()
+            );
+            $hints->add($hint);
+        }
+
+
+        if (isset($user['work_start'])) {
+            $workStart = Carbon::createFromTimestamp((integer)$user['work_start']);
+
+            $hint = $this->hintFactory->createHint(
+                $receiverId,
+                "Your Secret Santa joined the company in $workStart",
+                HintType::joinedInMonth(),
+                Carbon::now()->subSecond()
+            );
+
             $hints->add($hint);
         }
 

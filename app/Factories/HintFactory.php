@@ -41,7 +41,9 @@ class HintFactory
             ->setReceiverId($receiverId)
             ->setContent($content)
             ->setType($type)
-            ->setRevealedAt($revealedAt);
+            ->setRevealedAt($revealedAt)
+            ->setCreatedAt(new Carbon())
+            ->setUpdatedAt(new Carbon());
     }
 
     private function getRandomFakeContent() : string
