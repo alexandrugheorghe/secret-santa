@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Pair;
+use Illuminate\Database\Eloquent\Collection;
 
 class PairsRepository
 {
@@ -32,5 +33,13 @@ class PairsRepository
         }
 
         return $result->receiver_id;
+    }
+
+    public function save(Pair $pair) {
+        return $pair->save();
+    }
+
+    public function savePairs(Collection $pairs) {
+        return $this->model->insert($pairs->toArray());
     }
 }
