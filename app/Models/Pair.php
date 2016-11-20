@@ -8,5 +8,7 @@ class Pair extends Model
 {
     public $primaryKey = 'giver_id';
 
+    protected $guarded = [];
+
     public $incrementing = false;
 }

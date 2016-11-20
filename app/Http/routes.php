@@ -9,6 +9,6 @@ Route::group(
     function(\Illuminate\Routing\Router $router) {
         $router->get('/mock/hints', 'HintController@indexMock');
         $router->get('/hints', 'HintController@index');
-        $router->post('/users', 'UserController@postRaffle');
+        $router->post('/pairs', 'PairController@postRaffle');
     }
 );
