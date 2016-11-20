@@ -92,7 +92,7 @@ class InitialHintsStrategy
         }
 
         if (isset($user['work_start'])) {
-            $workStart = Carbon::createFromTimestamp($user['work_start']);
+            $workStart = Carbon::createFromTimestamp($user['work_start'])->format('F');
 
             $hint = $this->hintFactory->createHint(
                 $receiverId,

@@ -12,11 +12,6 @@ class Hint extends Model
 
     public $incrementing = false;
 
-    protected $casts = [
-        'created_at' => 'timestamp',
-        'updated_at' => 'timestamp',
-    ];
-
     public function setReceiverId(string $receiverId) : self
     {
         $this->receiver_id = $receiverId;
@@ -41,20 +36,6 @@ class Hint extends Model
     public function setRevealedAt(Carbon $revealedAt) : self
     {
         $this->revealed_at = $revealedAt;
-
-        return $this;
-    }
-
-    public function setCreatedAt(Carbon $createdAt) : self
-    {
-        $this->created_at = $createdAt;
-
-        return $this;
-    }
-
-    public function setUpdatedAt(Carbon $updatedAt) : self
-    {
-        $this->updated_at = $updatedAt;
 
         return $this;
     }
