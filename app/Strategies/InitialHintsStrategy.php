@@ -113,7 +113,7 @@ class InitialHintsStrategy
                 $receiverId,
                 "Your Secret Santa's birthday is in $birthDayMonth",
                 HintType::birthday(),
-                Carbon::now()->subSecond()
+                Carbon::now()->subSecond()->getTimestamp()
             );
 
             $hints->add($hint);
