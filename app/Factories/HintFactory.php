@@ -35,15 +35,13 @@ class HintFactory
             ->setCreatedAt($this->getRandomDate());
     }
 
-    public function createHint(string $receiverId, string $content, HintType $type, Carbon $revealedAt) : Hint
+    public function createHint(string $receiverId, string $content, HintType $type, int $revealedAt) : Hint
     {
         return (new Hint())
             ->setReceiverId($receiverId)
             ->setContent($content)
             ->setType($type)
-            ->setRevealedAt($revealedAt)
-            ->setCreatedAt(Carbon::now())
-            ->setUpdatedAt(Carbon::now());
+            ->setRevealedAt($revealedAt);
     }
 
     private function getRandomFakeContent() : string

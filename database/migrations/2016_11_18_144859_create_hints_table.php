@@ -17,8 +17,7 @@ class CreateHintsTable extends Migration
             $table->string('receiver_id');
             $table->text('content');
             $table->integer('type');
-            $table->timestamp('revealed_at');
-            $table->timestamps();
+            $table->bigInteger('revealed_at');
         });
     }
 

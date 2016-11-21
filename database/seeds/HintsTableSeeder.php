@@ -21,8 +21,6 @@ class HintsTableSeeder extends Seeder
             'content' => 'Your Secret Santa is female',
             'type' => HintType::gender(),
             'revealed_at' => Carbon::now(),
-            'created_at' => $faker->dateTime,
-            'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('hints')->insert([
@@ -30,8 +28,6 @@ class HintsTableSeeder extends Seeder
             'content' => 'Your Secret Santa joined in March',
             'type' => HintType::joinedInMonth(),
             'revealed_at' => Carbon::now()->addDay(),
-            'created_at' => $faker->dateTime,
-            'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('hints')->insert([
@@ -39,8 +35,6 @@ class HintsTableSeeder extends Seeder
             'content' => 'Your Secret Santa joined in 2015',
             'type' => HintType::joinedInYear(),
             'revealed_at' => Carbon::now()->subHour(),
-            'created_at' => $faker->dateTime,
-            'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('hints')->insert([
@@ -48,8 +42,6 @@ class HintsTableSeeder extends Seeder
             'content' => 'Your Secret Santa\s birthday is on May 31, 1989',
             'type' => HintType::birthday(),
             'revealed_at' => Carbon::now()->subWeek(),
-            'created_at' => $faker->dateTime,
-            'updated_at' => $faker->dateTime,
         ]);
 
         DB::table('hints')->insert([
@@ -57,8 +49,6 @@ class HintsTableSeeder extends Seeder
             'content' => 'Your Secret Santa\'s last name starts with G',
             'type' => HintType::lastNameStartsWith(),
             'revealed_at' => Carbon::now()->addWeek(),
-            'created_at' => $faker->dateTime,
-            'updated_at' => $faker->dateTime,
         ]);
     }
 }

@@ -55,7 +55,7 @@ class InitialHintsStrategy
                 $receiverId,
                 "Your Secret Santa's first name starts with $firstLetter",
                 HintType::firstNameStartsWith(),
-                Carbon::now()->subSecond()
+                Carbon::now()->subSecond()->getTimestamp()
             );
 
             $hints->add($hint);
@@ -69,7 +69,7 @@ class InitialHintsStrategy
                 $receiverId,
                 "Your Secret Santa's last name starts with $firstLetter",
                 HintType::lastNameStartsWith(),
-                Carbon::now()->subSecond()
+                Carbon::now()->subSecond()->getTimestamp()
             );
             $hints->add($hint);
         }
@@ -86,7 +86,7 @@ class InitialHintsStrategy
                 $receiverId,
                 "Your Secret Santa's gender is $gender",
                 HintType::gender(),
-                Carbon::now()->subSecond()
+                Carbon::now()->subSecond()->getTimestamp()
             );
             $hints->add($hint);
         }
@@ -99,7 +99,7 @@ class InitialHintsStrategy
                 $receiverId,
                 "Your Secret Santa joined the company in $workStart",
                 HintType::joinedInMonth(),
-                Carbon::now()->subSecond()
+                Carbon::now()->subSecond()->getTimestamp()
             );
 
             $hints->add($hint);
