@@ -69,13 +69,6 @@ class HintController extends Controller
      */
     public function indexMock(HintFactory $factory)
     {
-        $numHints = rand(1, 12);
-        $hints = new Collection();
-
-        for ($i = 0; $i < $numHints; $i++) {
-            $hints->add($factory->createRandomHint());
-        }
-
-        return $hints;
+        return $factory->createRandomUniqueHints(rand(4,12));
     }
 }

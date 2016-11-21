@@ -5,6 +5,7 @@ namespace App\Factories;
 use App\Models\Hint;
 use App\ValueObjects\HintType;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 
 class HintFactory
 {
@@ -32,7 +33,30 @@ class HintFactory
     {
         return (new Hint())
             ->setContent($this->getRandomFakeContent())
-            ->setCreatedAt($this->getRandomDate());
+            ->setRevealedAt($this->getRandomDate());
+    }
+
+    public function createRandomUniqueHints(int $numHints) : Collection
+    {
+        $hints = new Collection();
+        $unusedContents = self::FAKE_CONTENTS;
+
+        if ($numHints > count(self::FAKE_CONTENTS)) {
+            $numHints = count(self::FAKE_CONTENTS);
+        }
+
+        for ($i = 0; $i < $numHints; $i++) {
+            $index = array_rand($unusedContents);
+
+            $hint = (new Hint())
+                ->setContent($unusedContents[$index])
+                ->setRevealedAt($this->getRandomDate());
+
+            $hints->add($hint);
+            unset($unusedContents[$index]);
+        }
+
+        return $hints;
     }
 
     public function createHint(string $receiverId, string $content, HintType $type, int $revealedAt) : Hint
@@ -49,13 +73,14 @@ class HintFactory
         return self::FAKE_CONTENTS[array_rand(self::FAKE_CONTENTS)];
     }
 
-    private function getRandomDate() : Carbon
+    private function getRandomDate() : int
     {
         return Carbon::now()
             ->subWeeks(rand(1, 10))
             ->subDays(rand(1, 10))
             ->subHours(rand(1, 23))
             ->subMinutes(rand(1, 59))
-            ->subSeconds(rand(1, 59));
+            ->subSeconds(rand(1, 59))
+            ->getTimestamp();
     }
 }
