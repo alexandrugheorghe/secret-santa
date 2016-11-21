@@ -63,6 +63,7 @@ class HintController extends Controller
             $hints = $this->hintsRepository->getByReceiverId($receiverId);
         } catch (RepositoryException $e) {
             $initialHints->populate($wamToken, $receiverId);
+//            $temporaryHintsStrategy->populate($wamToken);
             $hints = $this->hintsRepository->getByReceiverId($receiverId);
         }
 
