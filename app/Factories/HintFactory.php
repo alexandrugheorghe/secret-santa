@@ -41,6 +41,10 @@ class HintFactory
         $hints = new Collection();
         $unusedContents = self::FAKE_CONTENTS;
 
+        if ($numHints > count(self::FAKE_CONTENTS)) {
+            $numHints = count(self::FAKE_CONTENTS);
+        }
+
         for ($i = 0; $i < $numHints; $i++) {
             $index = array_rand($unusedContents);
 
