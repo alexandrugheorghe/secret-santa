@@ -91,6 +91,7 @@ class InitialHintsStrategy
             $hints->add($hint);
         }
 
+        // Work start hint
         if (isset($user['work_start'])) {
             $workStart = Carbon::createFromTimestamp($user['work_start'])->format('F');
 
@@ -98,6 +99,20 @@ class InitialHintsStrategy
                 $receiverId,
                 "Your Secret Santa joined the company in $workStart",
                 HintType::joinedInMonth(),
+                Carbon::now()->subSecond()
+            );
+
+            $hints->add($hint);
+        }
+
+        // Birthday hint
+        if (isset($user['birthday'])) {
+            $birthDayMonth = Carbon::createFromTimestamp($user['birthday'])->format('F');
+
+            $hint = $this->hintFactory->createHint(
+                $receiverId,
+                "Your Secret Santa's birthday is in $birthDayMonth",
+                HintType::birthday(),
                 Carbon::now()->subSecond()
             );
 

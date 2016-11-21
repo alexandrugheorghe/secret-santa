@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Factories\HintFactory;
+use App\Models\Hint;
 use App\Repositories\RepositoryException;
 use App\Strategies\InitialHintsStrategy;
+use App\Strategies\TemporaryHintsStrategy;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\WorkAngelApi\Client as WorkAngelApiClient;
@@ -47,8 +49,11 @@ class HintController extends Controller
 
     /**
      * Returns hints for given user
+     * @param InitialHintsStrategy $initialHints
+     * @param TemporaryHintsStrategy $temporaryHintsStrategy
+     * @return Hint[]
      */
-    public function index(InitialHintsStrategy $initialHints)
+    public function index(InitialHintsStrategy $initialHints, TemporaryHintsStrategy $temporaryHintsStrategy)
     {
         $wamToken = $this->request->header('Wam-Token');
         $userId = $this->workAngelApiClient->getUserIdByToken($wamToken);

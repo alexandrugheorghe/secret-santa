@@ -21,7 +21,8 @@ class HintsRepository
     /**
      * @param string $receiverId
      *
-     * @return string
+     * @return Hint[]
+     * @throws RepositoryException
      */
     public function getByReceiverId(string $receiverId)
     {
